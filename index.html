@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Distributed Graph Analytics</title>
+    <link rel="stylesheet" href="revealjs/css/reveal.css">
+    <link rel="stylesheet" href="revealjs/css/theme/league.css" id="theme">
+    <link rel="stylesheet" href="revealjs/lib/css/zenburn.css">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+
+<body>
+<div class="reveal">
+    <div class="footer">
+        Big data team; Pieter van der Meer & Casper Koning
+    </div>
+    <div class="slides">
+        <section data-markdown="sections/titlepage.html"></section>
+        <section data-markdown="sections/overview.html"></section>
+        <section data-markdown="sections/graph-db-intro.html"></section>
+        <section data-markdown="sections/graph-vs-rdbms.html"></section>
+        <section data-markdown="sections/neo4j-cypher-intro.html"></section>
+        <section data-markdown="sections/hands-on-first.html"></section>
+        <section data-markdown="sections/hands-on-movie.html"></section>
+        <section data-markdown="sections/neo4j-pagerank.html"></section>
+        <section data-markdown="sections/mazerunner.html"></section>
+        <section data-markdown="sections/mazerunner-pagerank.html"></section>
+        <section data-markdown="sections/hands-on-mazerunner.html"></section>
+        <section data-markdown="sections/closing.html"></section>
+    </div>
+</div>
+
+<script src="revealjs/lib/js/head.min.js"></script>
+<script src="revealjs/js/reveal.js"></script>
+
+<script>
+
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: false,
+        progress: true,
+        history: true,
+        center: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+            {
+                src: 'revealjs/lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: 'revealjs/plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'revealjs/plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'revealjs/plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {src: 'revealjs/plugin/zoom-js/zoom.js', async: true},
+            {src: 'revealjs/plugin/notes/notes.js', async: true}
+        ]
+    });
+
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'css/pdf.css'; // Notice: I changed the path
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</body>
+</html>
