@@ -1,1 +1,59 @@
-<h2>Mazerunner: Introduction</h2>
+<section>
+    <h1>Mazerunner</h1>
+    <img src="images/mazerunner-movie.png" height="450" width="800">
+</section>
+<section>
+    <h2>Graphs algorithms </h2>
+    <ul>
+        <li>Can be evil at scale</li>
+        <li>Depends upon:</li>
+        <ul>
+            <li>Complexity of the graph</li>
+            <li>Connected components</li>
+            <li>Is your algorith iterative?</li>
+        </ul>
+        <li>You need a lot of memory</li>
+        <li>Many computational nodes</li>
+    </ul>
+</section>
+
+<section>
+    <h1>Mazerunner</h1>
+    <ul>
+        <li>Neo4j Contrib project</li>
+        <li>By Kenny Bastani</li>
+        <li>Supported algorithms
+            <ul>
+                <li>PageRank</li>
+                <li>Closeness Centrality</li>
+                <li>Betweenness Centrality</li>
+                <li>Triangle Counting</li>
+                <li>Connected Components</li>
+                <li>Strongly Connected Components</li>
+            </ul>
+
+        </li>
+    </ul>
+</section>
+
+<section>
+    <h2>Mazerunner; System overview</h2>
+    <image src="images/system_overview.png" width="700" height="400"></image>
+    <aside class="speaker-notes">Mazerunner uses a message broker to distribute graph processing jobs to Apache Spark's GraphX module. When an agent
+        job is
+        dispatched, a subgraph is exported from Neo4j and written to Apache Hadoop HDFS.
+
+        After Neo4j exports a subgraph to HDFS, a separate Mazerunner service for Spark is notified to begin processing that
+        data.
+        The Mazerunner service will then start a distributed graph processing algorithm using Scala and Spark's GraphX
+        module.
+        The GraphX algorithm is serialized and dispatched to Apache Spark for processing.
+
+        Once the Apache Spark job completes, the results are written back to HDFS as a Key-Value list of property updates to
+        be applied back to Neo4j.
+
+        Neo4j is then notified that a property update list is available from Apache Spark on HDFS. Neo4j batch imports the
+        results and applies the updates back to the original graph.</aside>
+</section>
+
+
