@@ -1,1 +1,85 @@
-<h2>Neo4J: Cypher intro</h2>
+<section>
+    <h2>Neo4J: Cypher intro</h2>
+</section>
+<section>
+    <h3>Neo4J</h3>
+    <ul>
+        <li>Open-source Graph database</li>
+        <li>Supports both storage and processing</li>
+        <li>By far the most popular Graph database</li>
+        <li>Supports a very powerful query language, called Cypher</li>
+    </ul>
+    <img data-src="img/neo4j.png" width="40%"/>
+</section>
+<section>
+    <h3>Cypher</h3>
+    <blockquote>
+        "Cypher is a <strong>declarative, SQL-inspired language for describing patterns in graphs</strong>.
+        It allows us to describe what we want to select, insert, update or delete from a
+        graph database without requiring us to describe exactly how to do it."
+    </blockquote>
+</section>
+<section>
+    <h3>Cypher queries</h3>
+    <img data-src="img/cypher-1.png">
+</section>
+<section>
+    <h3>Nodes</h3>
+    <ul>
+        <li>Nodes are declared in parens: <pre>(a)</pre></li>
+        <li>Nodes can have types: <pre>(s: Student)</pre></li>
+        <li>Nodes can have properties: <pre>(s: Student {name:"Casper"})</pre></li>
+        <li>Properties can also be accessed differently:<pre>MATCH (a) RETURN a.name</pre></li>
+    </ul>
+</section>
+<section>
+    <h3>Relationships</h3>
+    <ul>
+        <li>Relationships are declared in arrows with square brackets: <pre>(a)-[:RELATED]->(b)</pre></li>
+        <li>The arrows define the direction of the relationship: <pre>(a)-[:FATHER]->(b)<-[:SON]-(c)</pre></li>
+        <li>Relationships can also have properties:<pre>MATCH (a)-[r:RELATIONSHIP]->(b) RETURN r.property</pre></li>
+        <li>Anonymous relationships: <pre>(a)-->(b)</pre></li>
+    </ul>
+</section>
+<section>
+    <h3>MATCH/WHERE/RETURN</h3>
+    <ul>
+        <li>A common query uses the following structure:<pre>MATCH ... WHERE ... RETURN</pre></li>
+        <li>For example:
+            <pre>MATCH (p: Person)-[r:FAN_OF]->(s: SportsTeam)
+WHERE r.intensity="hooligan" and s.name="FC Utrecht"
+RETURN p.name</pre></li>
+    </ul>
+</section>
+<section>
+    <h3>RETURN modifiers</h3>
+    <ul>
+        <li>Sometimes you want to limit the number of results:<pre>MATCH (n) RETURN n LIMIT 10</pre></li>
+        <li>You also may want to order them: <pre>MATCH (rp: RichPerson) RETURN rp ORDER BY rp.credit DESC</pre></li>
+        <li>Or skip a few: <pre>MATCH n RETURN n SKIP 42</pre></li>
+        <li>You can combine these</li>
+    </ul>
+</section>
+<section>
+    <h3>CREATE/SET</h3>
+    <ul>
+        <li>You add data to the database using the CREATE statement:<pre>CREATE (g: Game {numberOfPlayers:"10"})</pre></li>
+        <li>You can also create relationships using the same statement, but you're going to have to match:
+            <pre>MATCH (a: Animal {type:"cat"}), (t: Toy {description:"scratching post"})
+CREATE (a)-[:CRAZY_ABOUT]->(t)</pre></li>
+        <li>Setting of a property can either be done within a CREATE statement, or separately in a SET:
+            <pre>MATCH (m: Monkey) SET m.hairy="very"</pre></li>
+    </ul>
+</section>
+<section>
+    <h3>DELETE/REMOVE</h3>
+    <ul>
+        <li>You can delete nodes or relationships with DELETE, or all connected relationships as well with DETACH DELETE</li>
+        <li>Delete the entire database with <pre>MATCH (n) DETACH DELETE n</pre></li>
+        <li>You can remove labels with REMOVE: <pre>MATCH (h: Human {name:"bunny in disguise"}) remove h:Human</pre></li>
+        <li>And properties as well: <pre>MATCH (h: Human {name:"bunny in disguise"}) remove h.name</pre></li>
+    </ul>
+</section>
+<section>
+    <h1>And much more...</h1>
+</section>
