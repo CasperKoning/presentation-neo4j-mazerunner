@@ -1,0 +1,24 @@
+<section>
+    <h2>Pagerank</h2>
+</section>
+<section>
+    <a href="https://www.google.com/trends/explore#q=pagerank&cmpt=q&tz=Etc%2FGMT-1"><h2>How many of you.....?</h2></a>
+</section>
+<section>
+    <h3>Pagerank</h3>
+    <blockquote>
+        "PageRank is[/was] an algorithm used by Google Search to rank websites [...] PageRank works by counting the
+        number and quality of links to a page to determine a rough estimate of how important the website is."
+    </blockquote>
+    <img src="img/pagerank-wikipedia.png">
+</section>
+<section>
+    <h3>Algorithm (simplified)</h3>
+    <ul>
+        <li>Iterative algorithm that traverses links</li>
+        <li class="fragment">Initialize the pagerank for each element with $\frac{1}{\text{#elements}}$</li>
+        <li class="fragment">If a node $n_1$ links to a node $n_2$, the pagerank contribution of $n_1$ to $n_2$ is computed by $\text{contr}(n_1,n_2) = \frac{\text{pagerank}(n_1)}{\text{#outgoingLinks}(n_1)}$</li>
+        <li class="fragment">The pagerank of a node $n$ is then $\text{pagerank} (n) = \sum \text{contr}(n_i,n) = \sum \frac{\text{pagerank}(n_i)}{\text{#outgoingLinks}(n_i)}$ where $n_i$ links to $n$</li>
+        <li class="fragment">Iterative, so we repeat this (until convergence).</li>
+    </ul>
+</section>
