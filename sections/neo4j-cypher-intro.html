@@ -74,12 +74,13 @@ CREATE (a)-[:CRAZY_ABOUT]->(t)</pre></li>
 <section>
     <h3>DELETE/REMOVE</h3>
     <ul>
-        <li>You can delete nodes or relationships with DELETE, or all connected relationships as well with DETACH DELETE</li>
-        <li>Delete the entire database with <pre>MATCH (n) DETACH DELETE n</pre></li>
+        <li>You can delete nodes or relationships with DELETE, or all connected relationships as well with DETACH DELETE:<pre>MATCH (n: Node)-[r:RELATIONSHIP]->(m: Mode) DELETE n,r</pre></li>
+        <li>Delete the entire database with: (<strong>please don't</strong>) <pre>MATCH (n) DETACH DELETE n</pre></li>
         <li>You can remove labels with REMOVE: <pre>MATCH (h: Human {name:"bunny in disguise"}) remove h:Human</pre></li>
         <li>And properties as well: <pre>MATCH (h: Human {name:"bunny in disguise"}) remove h.name</pre></li>
     </ul>
 </section>
 <section>
     <h1>And much more...</h1>
+    <p>http://neo4j.com/docs/stable/cypher-refcard</p>
 </section>
